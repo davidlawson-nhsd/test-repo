@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://test-repo/fhir/StructureDefinition/MyPatient" />
+  <version value="0.1" />
+  <name value="PatientDL" />
+  <title value="PatientDL" />
+  <status value="draft" />
+  <purpose value="To test Forge" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Patient" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Patient" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Patient.contact.extension">
+      <path value="Patient.contact.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="0" />
+    </element>
+    <element id="Patient.contact.extension:myExtension">
+      <path value="Patient.contact.extension" />
+      <sliceName value="myExtension" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://example.org/fhir/StructureDefinition/ContactRole" />
+      </type>
+      <isModifier value="false" />
+    </element>
+  </differential>
+</StructureDefinition>
